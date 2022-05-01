@@ -52,18 +52,24 @@ export default function Rightbar({ user }) {
         <div className="birthdayContainer">
           <img className="birthdayImg" src="assets/gift.png" alt="" />
           <span className="birthdayText">
-            <b>John</b> and <b>1 other friend</b> have a birhday today.
+            <b>"Birthdays" is a new feature to come</b>
           </span>
         </div>
-        <span className="birthdayText">
-          <b>"Birthdays" is a new feature to come</b>
-        </span>
         <img className="rightbarWelcome" src="assets/Welcome.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => (
             <Online key={u.id} user={u} />
           ))}
+          {/* {friends.map((friend) => (
+            <Link
+              to={"/profile/" + friend.username}
+              style={{ textDecoration: "none" }}
+              key={friend._id}
+            >
+              <span className="rightbarFollowingName">{friend.username}</span>
+            </Link>
+          ))} */}
         </ul>
       </>
     );
