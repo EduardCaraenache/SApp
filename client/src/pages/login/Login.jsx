@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const email = useRef();
   const password = useRef();
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -31,13 +31,12 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Our social</h3>
+          <h3 className="loginLogo">This is OurSpace</h3>
           <span className="loginDesc">
-            <p>The world is ours, we have the power to be together.</p>
-            <p>We can think whatever we want to think</p>
+            <p>The world is a playground and we have to be together.</p>
+            <p>We can think whatever we want to think.</p>
             <p>We can see whatever we want to see.</p>
             <p>We can hear whatever we want to hear.</p>
-            <p>This is OurSpace.</p>
           </span>
         </div>
         <div className="loginRight">
