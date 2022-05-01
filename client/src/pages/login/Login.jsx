@@ -31,9 +31,13 @@ export default function Login() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Our social</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            <p>The world is ours, we have the power to be together.</p>
+            <p>We can think whatever we want to think</p>
+            <p>We can see whatever we want to see.</p>
+            <p>We can hear whatever we want to hear.</p>
+            <p>This is OurSpace.</p>
           </span>
         </div>
         <div className="loginRight">
