@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { logoutCall } from "../../apiCalls";
 
 export default function Topbar() {
-  const { user, dispatch } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleClick = () => {
@@ -32,7 +32,7 @@ export default function Topbar() {
       <div className="topbarRight">
         <div className="topbarLinks">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <span className="topbarLink">Homepage</span>
+            <span className="topbarLink">Profile</span>
           </Link>
           <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
             <span className="topbarLink" onClick={handleClick}>

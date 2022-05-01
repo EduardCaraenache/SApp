@@ -103,9 +103,9 @@ export default function Rightbar({ user }) {
             <span className="rightbarInfoValue">
               {user.relationship === 1
                 ? "Single"
-                : user.relationship === 1
-                ? "Married"
-                : "-"}
+                : user.relationship === 2
+                ? "In a relationship"
+                : "Married"}
             </span>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function Rightbar({ user }) {
           {friends.map((friend) => (
             <Link
               to={"/profile/" + friend.username}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", color: "black" }}
               key={friend._id}
             >
               <div className="rightbarFollowing">

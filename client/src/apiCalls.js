@@ -14,5 +14,5 @@ export const loginCall = async (userCredential, dispatch) => {
 export const logoutCall = async () => {
   // dispatch({ type: "LOGOUT" });
   localStorage.clear();
-  window.location.reload();
+  window.location.replace("/login");
 };

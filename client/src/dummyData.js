@@ -1,52 +1,52 @@
 export const Users = [
   {
     id: 1,
-    profilePicture: "person/1.jpeg",
+    profilePicture: "dummy/1.jpeg",
     username: "Person 1",
   },
   {
     id: 2,
-    profilePicture: "person/2.jpeg",
+    profilePicture: "dummy/2.jpeg",
     username: "Person 2",
   },
   {
     id: 3,
-    profilePicture: "person/3.jpeg",
+    profilePicture: "dummy/3.jpeg",
     username: "Person 3",
   },
   {
     id: 4,
-    profilePicture: "person/4.jpeg",
+    profilePicture: "dummy/4.jpeg",
     username: "Person 4",
   },
   {
     id: 5,
-    profilePicture: "person/5.jpeg",
+    profilePicture: "dummy/5.jpeg",
     username: "Person 5",
   },
   {
     id: 6,
-    profilePicture: "person/6.jpeg",
+    profilePicture: "dummy/6.jpeg",
     username: "Person 6",
   },
   {
     id: 7,
-    profilePicture: "person/7.jpeg",
+    profilePicture: "dummy/7.jpeg",
     username: "Person 7",
   },
   {
     id: 8,
-    profilePicture: "person/8.jpeg",
+    profilePicture: "dummy/8.jpeg",
     username: "Person 8",
   },
   {
     id: 9,
-    profilePicture: "person/9.jpeg",
+    profilePicture: "dummy/9.jpeg",
     username: "Person 9",
   },
   {
     id: 10,
-    profilePicture: "person/10.jpeg",
+    profilePicture: "dummy/10.jpeg",
     username: "Person 10",
   },
 ];
