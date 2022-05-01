@@ -80,6 +80,9 @@ export default function Login() {
                   alignSelf: "center",
                   backgroundColor: "#42b72a",
                   textTransform: "capitalize",
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
                 }}
                 loading={isFetching}
                 type="submit"
