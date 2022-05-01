@@ -17,9 +17,6 @@ export default function Login() {
       dispatch
     );
   };
-
-  console.log(user);
-
   // const { isFetching, dispatch } = useContext(AuthContext);
 
   // const handleClick = (e) => {
