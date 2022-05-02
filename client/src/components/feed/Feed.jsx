@@ -13,7 +13,7 @@ export default function Feed({ username }) {
     const fetchPosts = async () => {
       const res = username
         ? await axios.get("/posts/profile/" + username)
-        : await axios.get("posts/timeline/" + user._id);
+        : await axios.get("/posts/timeline/" + user._id);
 
       setPosts(
         res.data.sort((p1, p2) => {
@@ -28,9 +28,11 @@ export default function Feed({ username }) {
     <div className="feed">
       <div className="feedWrapper">
         {(!username || username === user.username) && <Share />}
-        {posts.map((p) => (
-          <Post key={p._id} post={p} />
-        ))}
+        {posts.length > 0 ? (
+          posts.map((p) => <Post key={p._id} post={p} />)
+        ) : (
+          <p className="noPosts">Nici un post găsit</p>
+        )}
       </div>
     </div>
   );

@@ -5,3 +5,8 @@
 .feedWrapper {
   padding: 20px;
 }
+
+.noPosts {
+  padding: 50px;
+  text-align: center;
+}

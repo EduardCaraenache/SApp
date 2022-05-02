@@ -1,21 +1,56 @@
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { logoutCall } from "../../apiCalls";
+import { IconButton } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
+import axios from "axios";
+
+import React from "react";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function Topbar() {
   const { user } = useContext(AuthContext);
+  const [searchText, setSearchText] = useState("");
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const navigate = useNavigate();
+  const [openNotFoundSnackbar, setOpenNotFoundSnackbar] = useState(false);
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenNotFoundSnackbar(false);
+  };
   const handleClickLogout = () => {
     logoutCall();
   };
 
-  // const handleClickSearch = () => {
-  //   logoutCall();
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(searchText);
+    getUser();
+  };
+
+  const getUser = async () => {
+    try {
+      await axios.get("/users?username=" + searchText);
+      navigate("/");
+      navigate(`/profile/${searchText}`);
+      setSearchText("");
+    } catch (err) {
+      setOpenNotFoundSnackbar(true);
+    }
+  };
+
+  const action = (
+    <IconButton size="small" color="inherit" onClick={handleClose}>
+      <CloseIcon fontSize="small" />
+    </IconButton>
+  );
 
   return (
     <div className="topbarContainer">
@@ -25,13 +60,19 @@ export default function Topbar() {
         </Link>
       </div>
       <div className="topbarCenter">
-        <div className="searchbar">
-          <Search className="searchIcon" />
-          <input
-            placeholder="Search for friend, post or video"
-            className="searchInput"
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="searchbar">
+            <IconButton type="submit">
+              <Search className="searchIcon" type="button" />
+            </IconButton>
+            <input
+              value={searchText}
+              placeholder="Search for friend, post or video"
+              className="searchInput"
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </div>
+        </form>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
@@ -75,6 +116,13 @@ export default function Topbar() {
           />
         </Link>
       </div>
+      <Snackbar
+        open={openNotFoundSnackbar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Utilizatorul nu a fost găsit"
+        action={action}
+      />
     </div>
   );
 }
