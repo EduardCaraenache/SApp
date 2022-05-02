@@ -1,7 +1,7 @@
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Feed from "../../components/feed/Feed";
-import Rightbar from "../../components/rightbar/Rightbar";
+// import Feed from "../../components/feed/Feed";
+// import Rightbar from "../../components/rightbar/Rightbar";
 import "./faq.css";
 
 export default function Faq() {
@@ -10,10 +10,10 @@ export default function Faq() {
       <Topbar />
       <div className="faqContainer">
         <Sidebar />
-        <Feed />
-        <Rightbar />
+        {/* <Feed />
+        <Rightbar /> */}
       </div>
-      <Sidebar />
+      {/* <Sidebar /> */}
     </>
   );
 }

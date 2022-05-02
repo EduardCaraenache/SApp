@@ -9,9 +9,13 @@ export default function Topbar() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const handleClick = () => {
+  const handleClickLogout = () => {
     logoutCall();
   };
+
+  // const handleClickSearch = () => {
+  //   logoutCall();
+  // };
 
   return (
     <div className="topbarContainer">
@@ -35,7 +39,7 @@ export default function Topbar() {
             <span className="topbarLink">Profile</span>
           </Link>
           <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
-            <span className="topbarLink" onClick={handleClick}>
+            <span className="topbarLink" onClick={handleClickLogout}>
               Logout
             </span>
           </Link>
