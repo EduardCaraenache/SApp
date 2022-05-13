@@ -9,6 +9,7 @@ import {
   WorkOutline,
   Event,
   School,
+  BeachAccess,
 } from "@mui/icons-material";
 import { Users } from "../../dummyData";
 import CloseFriend from "../closeFriend/CloseFriend";
@@ -80,6 +81,15 @@ export default function Sidebar() {
             >
               <Event className="sidebarIcon" />
               <span className="sidebarListItemText">Events</span>
+            </Link>
+          </li>
+          <li className="sidebarListItem">
+            <Link
+              to="/visit"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <BeachAccess className="sidebarIcon" />
+              <span className="sidebarListItemText">Visit</span>
             </Link>
           </li>
           <li className="sidebarListItem">

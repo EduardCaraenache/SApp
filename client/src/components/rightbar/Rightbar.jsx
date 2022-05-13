@@ -5,7 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Add, Remove } from "@mui/icons-material";
+import { Add, Remove, Message } from "@mui/icons-material";
+import EditProfile from "../editProfile/EditProfile";
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -29,17 +30,14 @@ export default function Rightbar({ user }) {
     }
   }, [user]);
 
-  const handleClick = async () => {
+  const handleClickFollow = async () => {
     try {
-      console.log(followed);
       if (followed) {
-        console.log("Dam unfollow");
         await axios.put(`/users/${user._id}/unfollow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        console.log("Dam follow");
         await axios.put(`/users/${user._id}/follow`, {
           userId: currentUser._id,
         });
@@ -47,8 +45,9 @@ export default function Rightbar({ user }) {
       }
       setFollowed(!followed);
     } catch (err) {}
-    console.log(followed);
   };
+
+  const handleClickMessage = async () => {};
 
   const HomeRightbar = () => {
     return (
@@ -65,6 +64,7 @@ export default function Rightbar({ user }) {
           {Users.map((u) => (
             <Online key={u.id} user={u} />
           ))}
+
           {/* {friends.map((friend) => (
             <Link
               to={"/profile/" + friend.username}
@@ -82,11 +82,29 @@ export default function Rightbar({ user }) {
   const ProfileRightbar = () => {
     return (
       <>
-        {user.username !== currentUser.username && (
-          <button className="rightbarFollowButton" onClick={handleClick}>
-            {followed ? "Unfollow" : "Follow"}
-            {followed ? <Remove /> : <Add />}
-          </button>
+        {user.username !== currentUser.username ? (
+          <div>
+            <button
+              className="rightbarFollowButton"
+              onClick={handleClickFollow}
+            >
+              {followed ? "Unfollow" : "Follow"}
+              {followed ? <Remove /> : <Add />}
+            </button>
+
+            {followed ? (
+              <button
+                className="rightbarMessageButton"
+                onClick={handleClickMessage}
+              >
+                Trimite Mesaj &nbsp; <Message />
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
+        ) : (
+          <EditProfile user={user} />
         )}
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
@@ -105,7 +123,9 @@ export default function Rightbar({ user }) {
                 ? "Single"
                 : user.relationship === 2
                 ? "In a relationship"
-                : "Married"}
+                : user.relationship === 3
+                ? "Married"
+                : "- "}
             </span>
           </div>
         </div>

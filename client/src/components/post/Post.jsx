@@ -35,18 +35,19 @@ export default function Post({ post }) {
     setIsLiked(!isLiked);
   };
 
-  // const handlerSubmit =  () => {
-  //   console.log(currentUser._id);
-  //   console.log(post.userId);
-  //   console.log(currentUser._id === post.userId);
-  //   const post = await Post.findById(post._id);
-  //   console.log(post);
-  //   try {
-  //     axios.delete("/posts/" + post._id, { userId: currentUser._id });
-  //   } catch (err) {
-  //     console.log("N-a mers");
-  //   }
-  // };
+  const handlerDelete = () => {
+    console.log(currentUser._id);
+    console.log(post.userId);
+    console.log(currentUser._id === post.userId);
+    console.log(post);
+    try {
+      axios.delete("/posts/" + post._id, { userId: currentUser._id });
+    } catch (err) {
+      console.log("N-a mers");
+    }
+  };
+
+  const handlerEdit = () => {};
 
   return (
     <div className="post">
@@ -71,12 +72,12 @@ export default function Post({ post }) {
           {/* <Edit /> */}
           {post.userId === currentUser._id && (
             <div className="postTopRight">
-              {/* <IconButton type="submit" onClick={handlerSubmit}>
+              <IconButton type="submit" onClick={handlerEdit}>
                 <Edit className="editIcon" type="submit" />
               </IconButton>
-              <IconButton type="submit" onClick={handlerSubmit}>
+              <IconButton type="submit" onClick={handlerDelete}>
                 <Delete className="deleteIcon" />
-              </IconButton> */}
+              </IconButton>
             </div>
           )}
           {/* <MoreVert /> */}
