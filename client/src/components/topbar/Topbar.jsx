@@ -3,7 +3,6 @@ import { Search, Person, Chat, Notifications } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { logoutCall } from "../../apiCalls";
 import { IconButton } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import axios from "axios";
@@ -25,6 +24,12 @@ export default function Topbar() {
 
     setOpenNotFoundSnackbar(false);
   };
+
+  const logoutCall = async () => {
+    localStorage.clear();
+    window.location.replace("/login");
+  };
+
   const handleClickLogout = () => {
     logoutCall();
   };

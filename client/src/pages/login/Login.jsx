@@ -1,14 +1,24 @@
 import { useContext, useRef } from "react";
 import "./login.css";
-import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
   const { isFetching, dispatch } = useContext(AuthContext);
+
+  const loginCall = async (userCredential, dispatch) => {
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", userCredential);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err });
+    }
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
