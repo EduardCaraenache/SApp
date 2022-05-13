@@ -2,17 +2,15 @@ import "./sidebar.css";
 import {
   RssFeed,
   Chat,
-  PlayCircleFilledOutlined,
-  Group,
-  Bookmark,
-  HelpOutline,
-  WorkOutline,
-  Event,
-  School,
-  BeachAccess,
+  // PlayCircleFilledOutlined,
+  // Group,
+  // Bookmark,
+  // HelpOutline,
+  // WorkOutline,
+  // Event,
+  // School,
+  // BeachAccess,
 } from "@mui/icons-material";
-import { Users } from "../../dummyData";
-import CloseFriend from "../closeFriend/CloseFriend";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -35,7 +33,7 @@ export default function Sidebar() {
               <span className="sidebarListItemText">Chats</span>
             </Link>
           </li>
-          <li className="sidebarListItem">
+          {/* <li className="sidebarListItem">
             <Link
               to="/videos"
               style={{ textDecoration: "none", color: "black" }}
@@ -100,15 +98,9 @@ export default function Sidebar() {
               <School className="sidebarIcon" />
               <span className="sidebarListItemText">Courses</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
-        <button className="sidebarButton">Show More</button>
-        {/* <hr className="sidebarHr" /> */}
-        {/* <ul className="sidebarFriendList">
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
-        </ul> */}
+        {/* <button className="sidebarButton">Show More</button> */}
       </div>
     </div>
   );
