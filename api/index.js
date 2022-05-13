@@ -24,8 +24,6 @@ const sslServer = https.createServer(
   app
 );
 
-// sslServer.listen(3443, () => console.log("Secure Server on port 3443"));
-
 dotenv.config();
 
 mongoose.connect(
@@ -43,21 +41,13 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("Common one"));
 
-//O facem cu users.js
-// app.get("/", (req, res) => {
-//   res.send("Welcome to homepage");
-// });
 
-// app.get("/users", (req, res) => {
-//   res.send("Welcome to user page");
-// });
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
     cb(null, req.body.name);
-    // cb(null, file.originalname);
   },
 });
 

@@ -54,7 +54,6 @@ const UserSchema = new mongoose.Schema(
     },
     relationship: {
       type: Number,
-      //la enum are 3 stari single,married, in a relationship
       enum: [1, 2, 3],
     },
   },

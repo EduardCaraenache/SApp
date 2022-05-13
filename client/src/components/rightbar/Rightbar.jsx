@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove, Message } from "@mui/icons-material";
 import EditProfile from "../editProfile/EditProfile";
+import { useNavigate } from "react-router-dom";
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -15,6 +16,13 @@ export default function Rightbar({ user }) {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?._id)
   );
+  const followedUpdated = currentUser.followings.includes(user?._id);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setFollowed(currentUser.followings.includes(user?._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [followedUpdated]);
 
   useEffect(() => {
     if (user && user._id) {
@@ -47,7 +55,15 @@ export default function Rightbar({ user }) {
     } catch (err) {}
   };
 
-  const handleClickMessage = async () => {};
+  const handleClickMessage = () => {
+    navigate("/messenger");
+    //   try {
+    //     if( !exista conversatie )
+    //     {creeaza conversatie }
+    //     else{o deschide pe cea existenta}
+    //   } catch (err) {}
+    // };
+  };
 
   const HomeRightbar = () => {
     return (
@@ -88,7 +104,7 @@ export default function Rightbar({ user }) {
               className="rightbarFollowButton"
               onClick={handleClickFollow}
             >
-              {followed ? "Unfollow" : "Follow"}
+              {followed ? "Unfollow " : "Follow"}
               {followed ? <Remove /> : <Add />}
             </button>
 
@@ -97,7 +113,7 @@ export default function Rightbar({ user }) {
                 className="rightbarMessageButton"
                 onClick={handleClickMessage}
               >
-                Trimite Mesaj &nbsp; <Message />
+                Send a message &nbsp; <Message />
               </button>
             ) : (
               ""

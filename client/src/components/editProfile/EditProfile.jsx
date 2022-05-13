@@ -27,10 +27,6 @@ export default function EditProfile({ user }) {
   const handleClose = () => setOpen(false);
   const [localUser, setLocalUser] = React.useState(user);
 
-  console.log(user);
-
-  console.log(localUser);
-
   const relationshipStatus = ["Single", "In a relationship", "Married", "-"];
   const handleChange = (event) => {
     setLocalUser({ ...localUser, relationship: event.target.value });

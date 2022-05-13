@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
-// REGISTER - async ?? for the moment ( I / min 20)
+// REGISTER 
 router.post("/register", async (req, res) => {
   try {
     //generate the password
@@ -42,5 +42,6 @@ router.post("/login", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
