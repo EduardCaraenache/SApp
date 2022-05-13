@@ -21,6 +21,7 @@ export default function Rightbar({ user }) {
 
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [followedUpdated]);
 
   useEffect(() => {
