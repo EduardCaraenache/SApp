@@ -27,15 +27,6 @@ export default function Login() {
       dispatch
     );
   };
-  // const { isFetching, dispatch } = useContext(AuthContext);
-
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   loginCall(
-  //     { email: email.current.value, password: password.current.value },
-  //     dispatch
-  //   );
-  // };
 
   return (
     <div className="login">

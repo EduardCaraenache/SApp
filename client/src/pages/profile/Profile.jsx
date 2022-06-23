@@ -12,6 +12,11 @@ export default function Profile() {
   const [user, setUser] = useState({});
   const username = useParams().username;
 
+  const forceUpdate = async () => {
+    const res = await axios.get(`/users?username=${username}`);
+    setUser(res.data);
+  };
+
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users?username=${username}`);
@@ -20,6 +25,7 @@ export default function Profile() {
     fetchUser();
   }, [username]);
 
+  console.log("coverPicture: ", user.coverPicture);
   return (
     <>
       <Topbar />
@@ -54,7 +60,7 @@ export default function Profile() {
           </div>
           <div className="profileRightBottom">
             <Feed username={username} />
-            <Rightbar user={user} />
+            <Rightbar user={user} forceUpdate={forceUpdate} />
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function Feed({ username }) {
         {posts.length > 0 ? (
           posts.map((p) => <Post key={p._id} post={p} />)
         ) : (
-          <p className="noPosts">Nici un post găsit</p>
+          <p className="noPosts">Nicio postare găsită</p>
         )}
       </div>
     </div>

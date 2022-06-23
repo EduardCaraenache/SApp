@@ -9,7 +9,7 @@ import { Add, Remove, Message } from "@mui/icons-material";
 import EditProfile from "../editProfile/EditProfile";
 import { useNavigate } from "react-router-dom";
 
-export default function Rightbar({ user }) {
+export default function Rightbar({ user, forceUpdate }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
@@ -80,16 +80,6 @@ export default function Rightbar({ user }) {
           {Users.map((u) => (
             <Online key={u.id} user={u} />
           ))}
-
-          {/* {friends.map((friend) => (
-            <Link
-              to={"/profile/" + friend.username}
-              style={{ textDecoration: "none" }}
-              key={friend._id}
-            >
-              <span className="rightbarFollowingName">{friend.username}</span>
-            </Link>
-          ))} */}
         </ul>
       </>
     );
@@ -120,7 +110,7 @@ export default function Rightbar({ user }) {
             )}
           </div>
         ) : (
-          <EditProfile user={user} />
+          <EditProfile user={user} forceUpdate={forceUpdate} />
         )}
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">

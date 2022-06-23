@@ -120,8 +120,6 @@ export default function Messenger() {
               <>
                 <div className="chatBoxTop">
                   {messages.map((m) => {
-                    console.log("user", user);
-                    console.log("message", m);
                     return (
                       <div key={m._id} ref={scrollRef}>
                         <Message message={m} own={m.sender === user._id} />

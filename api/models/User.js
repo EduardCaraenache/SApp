@@ -36,10 +36,6 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
     desc: {
       type: String,
       max: 50,
@@ -57,7 +53,6 @@ const UserSchema = new mongoose.Schema(
       enum: [1, 2, 3],
     },
   },
-  //timestamps ??
   { timestamps: true }
 );
 

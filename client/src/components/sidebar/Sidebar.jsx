@@ -1,16 +1,5 @@
 import "./sidebar.css";
-import {
-  RssFeed,
-  Chat,
-  // PlayCircleFilledOutlined,
-  // Group,
-  // Bookmark,
-  // HelpOutline,
-  // WorkOutline,
-  // Event,
-  // School,
-  // BeachAccess,
-} from "@mui/icons-material";
+import { RssFeed, Chat } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -33,74 +22,8 @@ export default function Sidebar() {
               <span className="sidebarListItemText">Chats</span>
             </Link>
           </li>
-          {/* <li className="sidebarListItem">
-            <Link
-              to="/videos"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <PlayCircleFilledOutlined className="sidebarIcon" />
-              <span className="sidebarListItemText">Videos</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link
-              to="/groups"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <Group className="sidebarIcon" />
-              <span className="sidebarListItemText">Groups</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link
-              to="/saved"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <Bookmark className="sidebarIcon" />
-              <span className="sidebarListItemText">Saved</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link to="/faq" style={{ textDecoration: "none", color: "black" }}>
-              <HelpOutline className="sidebarIcon" />
-              <span className="sidebarListItemText">FAQ</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link to="/jobs" style={{ textDecoration: "none", color: "black" }}>
-              <WorkOutline className="sidebarIcon" />
-              <span className="sidebarListItemText">Jobs</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link
-              to="/events"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <Event className="sidebarIcon" />
-              <span className="sidebarListItemText">Events</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link
-              to="/visit"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <BeachAccess className="sidebarIcon" />
-              <span className="sidebarListItemText">Visit</span>
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link
-              to="/courses"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <School className="sidebarIcon" />
-              <span className="sidebarListItemText">Courses</span>
-            </Link>
-          </li> */}
         </ul>
-        {/* <button className="sidebarButton">Show More</button> */}
+        <button className="sidebarButton">Show More</button>
       </div>
     </div>
   );

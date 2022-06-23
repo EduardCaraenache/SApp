@@ -37,11 +37,11 @@ export default function Post({ post }) {
 
   const handlerDelete = () => {
     console.log(currentUser._id);
-    console.log(post.userId);
+    console.log(post._id);
     console.log(currentUser._id === post.userId);
     console.log(post);
     try {
-      axios.delete("/posts/" + post._id, { userId: currentUser._id });
+      axios.delete("/posts/" + post._id, { data: { userId: currentUser._id } });
     } catch (err) {
       console.log("N-a mers");
     }
