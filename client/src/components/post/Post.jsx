@@ -36,12 +36,9 @@ export default function Post({ post }) {
   };
 
   const handlerDelete = () => {
-    console.log(currentUser._id);
-    console.log(post._id);
-    console.log(currentUser._id === post.userId);
-    console.log(post);
     try {
       axios.delete("/posts/" + post._id, { data: { userId: currentUser._id } });
+      window.location.reload();
     } catch (err) {
       console.log("N-a mers");
     }
