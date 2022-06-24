@@ -28,7 +28,7 @@ export default function Post({ post }) {
     };
     fetchUser();
     setEditableDesciption(post.desc);
-  }, [post.userId]);
+  }, [post.userId, editMode]);
 
   const likeHandler = () => {
     try {
@@ -58,6 +58,7 @@ export default function Post({ post }) {
         userId: post.userId,
       });
       window.location.reload();
+      setEditMode(false);
     } catch (err) {
       console.log(err);
     }
