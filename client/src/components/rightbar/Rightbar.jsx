@@ -19,6 +19,8 @@ export default function Rightbar({ user, forceUpdate }) {
   const followedUpdated = currentUser.followings.includes(user?._id);
   const navigate = useNavigate();
 
+
+  
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -29,6 +31,17 @@ export default function Rightbar({ user, forceUpdate }) {
       const getFriends = async () => {
         try {
           const friendList = await axios.get("/users/friends/" + user._id);
+          setFriends(friendList.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getFriends();
+    }
+    else {
+      const getFriends = async () => {
+        try {
+          const friendList = await axios.get("/users/friends/" + currentUser._id);
           setFriends(friendList.data);
         } catch (err) {
           console.log(err);
@@ -64,6 +77,7 @@ export default function Rightbar({ user, forceUpdate }) {
     //   } catch (err) {}
     // };
   };
+  console.log(friends);
 
   const HomeRightbar = () => {
     return (
@@ -77,7 +91,7 @@ export default function Rightbar({ user, forceUpdate }) {
         <img className="rightbarWelcome" src="assets/Welcome.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
+          {friends.map((u) => (
             <Online key={u.id} user={u} />
           ))}
         </ul>
