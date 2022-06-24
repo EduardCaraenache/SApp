@@ -81,7 +81,10 @@ export default function Topbar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link
+            to={`/profile/${user.username}`}
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <span className="topbarLink">Profile</span>
           </Link>
           <Link to="/login" style={{ textDecoration: "none", color: "white" }}>

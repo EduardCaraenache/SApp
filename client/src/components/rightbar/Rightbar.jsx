@@ -1,5 +1,4 @@
 import "./rightbar.css";
-import { Users } from "../../dummyData";
 import Online from "../online/Online";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
@@ -68,12 +67,8 @@ export default function Rightbar({ user, forceUpdate }) {
           </span>
         </div>
         <img className="rightbarWelcome" src="assets/Welcome.png" alt="" />
-        <h4 className="rightbarTitle">Online Friends</h4>
-        <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
-          ))}
-        </ul>
+        <h4 className="rightbarTitle">Friends</h4>
+        <ul className="rightbarFriendList"></ul>
       </>
     );
   };
