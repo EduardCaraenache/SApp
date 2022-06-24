@@ -1,5 +1,5 @@
 import "./post.css";
-import { MoreVert, Delete, Edit } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
@@ -9,7 +9,6 @@ import { IconButton, TextField, Button } from "@mui/material";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
-  const [comments, setComments] = useState();
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -84,7 +83,7 @@ export default function Post({ post }) {
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
 
-          {/* <Edit /> */}
+
           {post.userId === currentUser._id && (
             <div className="postTopRight">
               <IconButton type="submit" onClick={handlerEdit}>
@@ -95,7 +94,6 @@ export default function Post({ post }) {
               </IconButton>
             </div>
           )}
-          {/* <MoreVert /> */}
         </div>
         <div className="postCenter">
           {editMode ? (
@@ -114,7 +112,6 @@ export default function Post({ post }) {
           ) : (
             <span className="postText">{post?.desc}</span>
           )}
-          {/* <img className="postImg" src={PF + post.img} alt="" /> */}
 
           {post.img && <img className="postImg" src={PF + post.img} alt="" />}
         </div>

@@ -81,7 +81,10 @@ export default function Topbar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link
+            to={`/profile/${user.username}`}
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <span className="topbarLink">Profile</span>
           </Link>
           <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
@@ -93,7 +96,7 @@ export default function Topbar() {
         <div className="topbarIcons">
           <div className="topbarIconItem">
             <Person />
-            <span className="topbarIconBadge">1</span>
+            <span className="topbarIconBadge"></span>
           </div>
           <div className="topbarIconItem">
             <Link
@@ -101,12 +104,12 @@ export default function Topbar() {
               style={{ textDecoration: "none", color: "white" }}
             >
               <Chat />
-              <span className="topbarIconBadge">2</span>
+              <span className="topbarIconBadge"></span>
             </Link>
           </div>
           <div className="topbarIconItem">
             <Notifications />
-            <span className="topbarIconBadge">1</span>
+            <span className="topbarIconBadge"></span>
           </div>
         </div>
         <Link to={`/profile/${user.username}`}>

@@ -25,7 +25,6 @@ export default function Profile() {
     fetchUser();
   }, [username]);
 
-  console.log("coverPicture: ", user.coverPicture);
   return (
     <>
       <Topbar />
