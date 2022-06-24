@@ -18,6 +18,8 @@ export default function Rightbar({ user, forceUpdate }) {
   const followedUpdated = currentUser.followings.includes(user?._id);
   const navigate = useNavigate();
 
+
+  
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
   }, [followedUpdated]);
@@ -27,6 +29,17 @@ export default function Rightbar({ user, forceUpdate }) {
       const getFriends = async () => {
         try {
           const friendList = await axios.get("/users/friends/" + user._id);
+          setFriends(friendList.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getFriends();
+    }
+    else {
+      const getFriends = async () => {
+        try {
+          const friendList = await axios.get("/users/friends/" + currentUser._id);
           setFriends(friendList.data);
         } catch (err) {
           console.log(err);
@@ -56,6 +69,7 @@ export default function Rightbar({ user, forceUpdate }) {
   const handleClickMessage = () => {
     navigate("/messenger");
   };
+  console.log(friends);
 
   const HomeRightbar = () => {
     return (
@@ -68,7 +82,11 @@ export default function Rightbar({ user, forceUpdate }) {
         </div>
         <img className="rightbarWelcome" src="assets/Welcome.png" alt="" />
         <h4 className="rightbarTitle">Friends</h4>
-        <ul className="rightbarFriendList"></ul>
+        <ul className="rightbarFriendList">
+          {friends.map((u) => (
+            <Online key={u.id} user={u} />
+          ))}
+        </ul>
       </>
     );
   };
