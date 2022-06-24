@@ -5,7 +5,7 @@ import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { IconButton } from "@mui/material";
+import { IconButton, TextField, Button } from "@mui/material";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -14,6 +14,8 @@ export default function Post({ post }) {
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
+  const [editMode, setEditMode] = useState(false);
+  const [editableDesription, setEditableDesciption] = useState();
 
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
@@ -25,6 +27,7 @@ export default function Post({ post }) {
       setUser(res.data);
     };
     fetchUser();
+    setEditableDesciption(post.desc);
   }, [post.userId]);
 
   const likeHandler = () => {
@@ -44,7 +47,21 @@ export default function Post({ post }) {
     }
   };
 
-  const handlerEdit = () => {};
+  const handlerEdit = () => {
+    setEditMode(true);
+  };
+
+  const handleChangeDesc = () => {
+    try {
+      axios.put("/posts/" + post._id, {
+        desc: editableDesription,
+        userId: post.userId,
+      });
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="post">
@@ -80,7 +97,22 @@ export default function Post({ post }) {
           {/* <MoreVert /> */}
         </div>
         <div className="postCenter">
-          <span className="postText">{post?.desc}</span>
+          {editMode ? (
+            <>
+              <TextField
+                value={editableDesription}
+                onChange={(e) => {
+                  setEditableDesciption(e.target.value);
+                }}
+                sx={{ width: "100%", mb: 2 }}
+              ></TextField>
+              <Button variant="contained" onClick={handleChangeDesc}>
+                SAVE
+              </Button>
+            </>
+          ) : (
+            <span className="postText">{post?.desc}</span>
+          )}
           {/* <img className="postImg" src={PF + post.img} alt="" /> */}
 
           {post.img && <img className="postImg" src={PF + post.img} alt="" />}
