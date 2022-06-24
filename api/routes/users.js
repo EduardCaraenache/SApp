@@ -2,11 +2,6 @@ const User = require("../models/User");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
-// router.get("/", (req, res) => {
-//   res.send("hei it's user route");
-// });
-
-//update user
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     if (req.body.password) {
@@ -31,7 +26,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//delete user
 router.delete("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
@@ -46,7 +40,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//get a user
 router.get("/", async (req, res) => {
   const userId = req.query.userId;
   const username = req.query.username;
@@ -61,7 +54,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-//get friends
 router.get("/friends/:userId", async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -81,7 +73,6 @@ router.get("/friends/:userId", async (req, res) => {
   }
 });
 
-//follow a user
 router.put("/:id/follow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
@@ -102,7 +93,6 @@ router.put("/:id/follow", async (req, res) => {
   }
 });
 
-//unfollow a user
 router.put("/:id/unfollow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {

@@ -21,7 +21,6 @@ export default function Rightbar({ user, forceUpdate }) {
 
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [followedUpdated]);
 
   useEffect(() => {
@@ -57,12 +56,6 @@ export default function Rightbar({ user, forceUpdate }) {
 
   const handleClickMessage = () => {
     navigate("/messenger");
-    //   try {
-    //     if( !exista conversatie )
-    //     {creeaza conversatie }
-    //     else{o deschide pe cea existenta}
-    //   } catch (err) {}
-    // };
   };
 
   const HomeRightbar = () => {

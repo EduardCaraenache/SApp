@@ -12,7 +12,6 @@ const postRoute = require("./routes/posts");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 const path = require("path");
-const cors = require("cors");
 
 const https = require("https");
 const fs = require("fs");
@@ -37,7 +36,6 @@ mongoose.connect(
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-//middleware
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("Common one"));

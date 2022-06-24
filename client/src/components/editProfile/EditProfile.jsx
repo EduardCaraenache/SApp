@@ -38,7 +38,6 @@ export default function EditProfile({ user, forceUpdate }) {
   };
 
   const submitHandler = async (e) => {
-    // e.preventDefault();
     console.log(localUser);
     await axios.put(`/users/${localUser._id}`, {
       userId: localUser._id,
@@ -49,8 +48,7 @@ export default function EditProfile({ user, forceUpdate }) {
       const fileName = coverPicture.name;
       data.append("name", fileName);
       data.append("file", coverPicture);
-      // newPost.img = fileName;
-      //console.log(newPost);
+
       try {
         await axios.post("/upload", data);
       } catch (err) {}
@@ -60,8 +58,7 @@ export default function EditProfile({ user, forceUpdate }) {
       const fileName = profilePicture.name;
       data.append("name", fileName);
       data.append("file", profilePicture);
-      // newPost.img = fileName;
-      //console.log(newPost);
+
       try {
         await axios.post("/upload", data);
       } catch (err) {}
@@ -162,14 +159,7 @@ export default function EditProfile({ user, forceUpdate }) {
             >
               Email :
             </TextField>
-            {/* <TextField
-              id="modalPassword"
-              label="Password"
-              variant="outlined"
-              sx={{ mt: 2 }}
-            >
-              Password:
-            </TextField> */}
+
             <TextField
               id="modalDescription"
               label="Description"
